@@ -96,4 +96,9 @@ if __name__ == "__main__":
     print(f"Performance: {model_performance(best_model, x_test, y_test)}")
     print("Best hyperparameters: {}".format(trial.params))
 
+# 124225.85791740331
 # Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 849, 'max_depth': 15, 'min_samples_split': 4, 'min_samples_leaf': 2, 'max_features': 'log2'}
+
+
+# Performance: 117951.41601946934
+# Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 951, 'max_depth': 16, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': 'auto'}
