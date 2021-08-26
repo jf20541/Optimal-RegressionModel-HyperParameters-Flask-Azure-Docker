@@ -28,6 +28,14 @@
     ├── inputs
     │   ├── train.csv               # Training dataset
     │   └── train_clean.csv         # Cleaned data, featured engineered, scaled
+    ├── plots
+    │   ├── price_cleaned_distribution.png   
+    │   ├── price_conditions_yrbuilt.png
+    │   ├── price_skewed_distribution.png   
+    │   ├── train_clean_corr.png
+    │   ├── train_ohe.png
+    │   ├── train_target_encode_corr.png
+    │   └── year_built_dist.png
     ├── notebooks
     │   └── house_price_eda.ipynb   # Exploratory Data Analysis and Feature Engineering
     ├── requierments.txt            # Packages used for project
