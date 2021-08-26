@@ -16,6 +16,13 @@ x_train, x_test, y_train, y_test = train_test_split(features, targets, test_size
 
 
 def create_model(trial):
+    """ Find the objective optimal and hyper-parameters to be optimized
+    
+    Args: trial [object]:  process of evaluating an objective function
+    Raises: optuna.TrialPruned: terminates trial that does not meet a predefined condition based on value
+    Returns: [object]: optimal regression model 
+
+    """
     model_type = trial.suggest_categorical(
         "model_type",
         [
@@ -75,21 +82,36 @@ def create_model(trial):
 
 
 def model_performance(model, x_test, y_test):
+    """ Get the model's performance by predicting and evaluating on the testing set
+    Args:
+        model [object]: regression model 
+        x_test [array-int]: testing set (features)
+        y_test [array-int]: testing set (targets)
+    Returns: [float]: RMSE (model's performance)
+    """
     pred = model.predict(x_test)
     return sqrt(mean_squared_error(y_test, pred))
 
 
 def objective(trial):
+    """ Passes to an objective function, gets parameter suggestions, 
+        manage the trial's state, and sets defined attributes of the trial
+    Args:
+        trial [object]: manage the trial states 
+    Returns: [object]:  sets optimal model and hyperparameters
+    """
     model = create_model(trial)
     model.fit(x_train, y_train.ravel())
     return model_performance(model, x_test, y_test)
 
 
 if __name__ == "__main__":
+    # initiate study object and minimize MSE metric
     study = optuna.create_study(direction="minimize")
+    # define number of trials to 500
     study.optimize(objective, n_trials=50)
 
-    # get optimal model and its hyper-parameters
+    # get optimal model by metric and its hyper-parameters
     best_model = create_model(study.best_trial)
     best_model.fit(x_train, y_train.ravel())
     trial = study.best_trial

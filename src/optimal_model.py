@@ -9,14 +9,9 @@ df = pd.read_csv(config.CLEAN_FILE)
 targets = df.price.values
 features = df.drop("price", axis=1).values
 
-# scaler = StandardScaler()
-# targets = scaler.fit_transform(targets)
-# features = scaler.fit_transform(features)
-
 x_train, x_test, y_train, y_test = train_test_split(features, targets, test_size=0.25)
 
 
-print(y_train)
 
 regr = RandomForestRegressor(
     n_estimators=849,
@@ -28,8 +23,8 @@ regr = RandomForestRegressor(
 regr.fit(x_train, y_train)
 pred = regr.predict(x_test)
 mse = mean_squared_error(y_test, pred)
-print(mse)
 
+print(mse)
 
 # x_train = scaler.inverse_transform(x_train)
 # y_train = scaler.inverse_transform(y_train)
