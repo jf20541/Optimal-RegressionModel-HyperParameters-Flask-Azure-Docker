@@ -2,50 +2,37 @@
 
 
 ## Objective
-Monitor and optimize regression models **(DecisionTreeRegressor, RandomForestRegressor, XGBRegressor, SVR, KNeighborsRegressor)** and optimize each model's hyper-parameters using Tree-structured Parzen Estimator Approach (TPE). Evaluated the model's performance based on RMSE given a different approach of feature engineering (One-Hot Encoding, Target Encoding, etc) for the house prediction dataset. 
+Monitor and seek the optimal regression model **(DecisionTreeRegressor, RandomForestRegressor, XGBRegressor, SVR, KNeighborsRegressor)** and optimize each model's hyper-parameters using Tree-structured Parzen Estimator Approach (TPE) by iterating 1,000 trials. Evaluated the model's performance based on RMSE given different approaches by feature engineering (One-Hot Encoding, Target Encoding, etc) for the house prediction dataset. 
 
-## Regression Models 
-**XGBoost Regressor: TRAINING_CLEAN**
-```
-Performance: 128238.40 RMSE
-Optimal Hyper-Parameters:
-'eta': 0.30000000000000004, 'gamma': 0.1, 'max_depth': 5, 'min_child_weight': 1, 'subsample': 0.9
-```
+## Optimal Regression Model and Optimal Hyper-Parameters
 
 **RandomForest Regressor: TRAINING_CLEAN**
 ```
 Performance: 117951.42 RMSE
-Optimal Hyper-Parameters:
-'n_estimators': 951, 'max_depth': 16, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': 'auto'
+Optimal Hyper-Parameters: 'n_estimators': 951, 'max_depth': 16, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': 'auto'
 ```
-**Decision Tree Regressor: TRAINING_CLEAN**
-```
-Performance: 183979.50
-Optimal Hyper-Parameters:
-'max_depth': 5, 'min_samples_split': 18, 'min_samples_leaf': 8
-```
-**KNeighbors Regressor with Scaling: TRAINING_OHE**
-```
-Performance: 0.5549328284676253
-Optimal Hyper-Parameters:
-'n_neighbors': 8, 'weights': 'uniform', 'p': 2
-```
-**Support Vector Regressor with Scaling: TRAINING_OHE**
-```
-Performance: 0.5276328030789721
-Optimal Hyper-Parameters:
-'kernel': 'rbf', 'svm-regularization': 0.9830618662438664, 'degree': 3.0
-```
-## Metrics and Optuna (Optimization Framework)
-
-Metric:\
+## Metric
 ![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20RMSE%20%3D%20%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28Predicted_%7Bi%7D%20-%20Actual_%7Bi%7D%5E%7B%7D%29%5E%7B2%7D%7D%7BN%7D%7D)
 
 
-Tree-structured Parzen Estimator Approach (TPE):
-- Fits one Gaussian Mixture Model (GMM) to the set of parameter values associated with the best objective values, and another GMM to the remaining parameter values. It chooses the parameter value x that maximizes the ratio.
+## Tree-structured Parzen Estimator Approach (TPE)
+**Objective**\
+Build a probability model of the objective function and use it to select the optimal regression model and its hyper-parameters to evaluate its performance by minimizing RMSE on the testing set. With Bayesian approach, it keeps track of the past results which it uses to form a probabilistic model mapping hyper-parameters to a probability of a score on the objective function.
+
+TPE is a model that applies the Bayes Rule given the equation below, where the probability of (y) RMSE score on the objective function given a set of hyper-parameters (x)
+
+![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20p%28y%7Cx%29%20%3D%20%5Cfrac%7Bp%28x%7Cy%29*p%28y%29%7D%7Bp%28x%29%7D)
 
 
+With **TWO** distributions for hyper-parameters
+1. l(x): the value of the objective function is less than the threshold
+2. g(x): the value of the objective function is greater than the threshold
+
+![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20p%28x%7Cy%29%20%3D%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20%5Cl%28x%29%20%26%20if%5C%3B%20y%20%3C%20y*%5C%5C%20g%28x%29%20%26%20if%5C%3B%20y%20%5Cgeq%20y*%20%5Cend%7Bmatrix%7D%5Cright.)
+
+Expected Improvement (EI) objective is to maximize the ratio below. The objective function records the results and its hyper-parameters, forming a history. TPE works by iteration pairs to form l(x), evaluates each iterations ratio l(x)/g(x), and returns the highest Expected Improvement.
+
+![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20EI_%7By*%7D%20%28x%29%20%3D%20arg%20max_%7Bx%5Cepsilon%20%5Cchi%20%7D%20%5Cfrac%7Bl%28x%29%7D%7Bg%28x%29%7D)
 
 
 ## Repository File Structure
@@ -70,8 +57,6 @@ Tree-structured Parzen Estimator Approach (TPE):
     ├── requierments.txt            # Packages used for project
     ├── sources.txt                 # Sources
     └── README.md
- 
-## Step-by-Step
 
 ## Data
 [Kaggle Dataset](https://www.kaggle.com/anmolkumar/health-insurance-cross-sell-prediction)
