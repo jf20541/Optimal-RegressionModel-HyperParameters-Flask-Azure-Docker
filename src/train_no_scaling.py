@@ -16,12 +16,12 @@ x_train, x_test, y_train, y_test = train_test_split(features, targets, test_size
 
 
 def create_model(trial):
-    """ Find the objective optimal and hyper-parameters to be optimized
-    
+    """Trial object and returns regression model to
+        generate a model and fit it on our training data
+
     Args: trial [object]:  process of evaluating an objective function
     Raises: optuna.TrialPruned: terminates trial that does not meet a predefined condition based on value
-    Returns: [object]: optimal regression model 
-
+    Returns: [object]: optimal regression model
     """
     model_type = trial.suggest_categorical(
         "model_type",
@@ -82,9 +82,9 @@ def create_model(trial):
 
 
 def model_performance(model, x_test, y_test):
-    """ Get the model's performance by predicting and evaluating on the testing set
+    """Get the model's performance by predicting and evaluating on the testing set
     Args:
-        model [object]: regression model 
+        model [object]: regression model
         x_test [array-int]: testing set (features)
         y_test [array-int]: testing set (targets)
     Returns: [float]: RMSE (model's performance)
@@ -94,10 +94,10 @@ def model_performance(model, x_test, y_test):
 
 
 def objective(trial):
-    """ Passes to an objective function, gets parameter suggestions, 
+    """Passes to an objective function, gets parameter suggestions,
         manage the trial's state, and sets defined attributes of the trial
     Args:
-        trial [object]: manage the trial states 
+        trial [object]: manage the trial states
     Returns: [object]:  sets optimal model and hyperparameters
     """
     model = create_model(trial)
@@ -106,7 +106,7 @@ def objective(trial):
 
 
 if __name__ == "__main__":
-    # initiate study object and minimize MSE metric
+    # minimize the return value of objective function
     study = optuna.create_study(direction="minimize")
     # define number of trials to 500
     study.optimize(objective, n_trials=50)
@@ -118,9 +118,19 @@ if __name__ == "__main__":
     print(f"Performance: {model_performance(best_model, x_test, y_test)}")
     print("Best hyperparameters: {}".format(trial.params))
 
-# 124225.85791740331
-# Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 849, 'max_depth': 15, 'min_samples_split': 4, 'min_samples_leaf': 2, 'max_features': 'log2'}
 
-
+"""WITH TRAIN_CLEAN.CSV"""
 # Performance: 117951.41601946934
 # Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 951, 'max_depth': 16, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': 'auto'}
+
+"""WITH TRAIN_OHE.CSV"""
+# Performance: 143386.1571802534
+# Best hyperparameters: {'model_type': 'XGBRegressor', 'eta': 0.1, 'gamma': 1.0, 'max_depth': 5, 'min_child_weight': 1, 'subsample': 0.7000000000000001}
+
+# Performance: 0.5463994755315752
+# Best hyperparameters: {'model_type': 'SVR', 'kernel': 'rbf', 'svm-regularization': 1.7993381898137282, 'degree': 1.0}
+
+
+"""WITH train_target_encode"""
+# Performance: 133956.7806999551
+# Best hyperparameters: {'model_type': 'XGBRegressor', 'eta': 0.9, 'gamma': 0.5, 'max_depth': 5, 'min_child_weight': 5, 'subsample': 0.9}

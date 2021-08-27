@@ -23,12 +23,12 @@ x_train, x_test, y_train, y_test = train_test_split(features, targets, test_size
 
 
 def create_model(trial):
-    """[summary]
-    Args: trial ([type]): [description]
-    Raises:
-        optuna.TrialPruned: [description]
-    Returns:
-        [type]: [description]
+    """Trial object and returns regression model to
+        generate a model and fit it on standard scaler training data
+
+    Args: trial [object]:  process of evaluating an objective function
+    Raises: optuna.TrialPruned: terminates trial that does not meet a predefined condition based on value
+    Returns: [object]: optimal regression model
     """
     model_type = trial.suggest_categorical(
         "model_type",
@@ -62,21 +62,21 @@ def create_model(trial):
 
 
 def model_performance(model, x_test, y_test):
-    """ Evaluating suggested models hyperparameters performance (RMSE)
-    
+    """Evaluating suggested models hyperparameters performance (RMSE)
+
     Args: trial [object]:  process of evaluating an objective function
     Raises: optuna.TrialPruned: terminates trial that does not meet a predefined condition based on value
-    Returns: [object]: optimal regression model 
+    Returns: [object]: optimal regression model
     """
     pred = model.predict(x_test)
     return sqrt(mean_squared_error(y_test, pred))
 
 
 def objective(trial):
-    """ Passes to an objective function, gets parameter suggestions, 
+    """Passes to an objective function, gets parameter suggestions,
         manage the trial's state, and sets defined attributes of the trial
     Args:
-        trial [object]: manage the trial states 
+        trial [object]: manage the trial states
     Returns: [object]:  sets optimal model and hyperparameters
     """
     model = create_model(trial)
@@ -85,7 +85,7 @@ def objective(trial):
 
 
 if __name__ == "__main__":
-    # initiate study object and minimize MSE metric
+    # minimize the return value of objective function
     study = optuna.create_study(direction="minimize")
     # define number of trials to 500
     study.optimize(objective, n_trials=20)
@@ -96,6 +96,3 @@ if __name__ == "__main__":
     trial = study.best_trial
     print(f"Performance: {model_performance(best_model, x_test, y_test)}")
     print(f"Best hyperparameters: {trial.params}")
-
-
-# Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 849, 'max_depth': 15, 'min_samples_split': 4, 'min_samples_leaf': 2, 'max_features': 'log2'}
