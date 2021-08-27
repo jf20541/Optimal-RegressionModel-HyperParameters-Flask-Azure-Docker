@@ -16,12 +16,12 @@ x_train, x_test, y_train, y_test = train_test_split(features, targets, test_size
 
 
 def create_model(trial):
-    """Trial object and returns regression model to
+    """ Trial object and returns regression model to 
         generate a model and fit it on our training data
-
+    
     Args: trial [object]:  process of evaluating an objective function
     Raises: optuna.TrialPruned: terminates trial that does not meet a predefined condition based on value
-    Returns: [object]: optimal regression model
+    Returns: [object]: optimal regression model 
     """
     model_type = trial.suggest_categorical(
         "model_type",
@@ -82,9 +82,9 @@ def create_model(trial):
 
 
 def model_performance(model, x_test, y_test):
-    """Get the model's performance by predicting and evaluating on the testing set
+    """ Get the model's performance by predicting and evaluating on the testing set
     Args:
-        model [object]: regression model
+        model [object]: regression model 
         x_test [array-int]: testing set (features)
         y_test [array-int]: testing set (targets)
     Returns: [float]: RMSE (model's performance)
@@ -94,10 +94,10 @@ def model_performance(model, x_test, y_test):
 
 
 def objective(trial):
-    """Passes to an objective function, gets parameter suggestions,
+    """ Passes to an objective function, gets parameter suggestions, 
         manage the trial's state, and sets defined attributes of the trial
     Args:
-        trial [object]: manage the trial states
+        trial [object]: manage the trial states 
     Returns: [object]:  sets optimal model and hyperparameters
     """
     model = create_model(trial)
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 # Performance: 0.5463994755315752
 # Best hyperparameters: {'model_type': 'SVR', 'kernel': 'rbf', 'svm-regularization': 1.7993381898137282, 'degree': 1.0}
 
-
 """WITH train_target_encode"""
 # Performance: 133956.7806999551
 # Best hyperparameters: {'model_type': 'XGBRegressor', 'eta': 0.9, 'gamma': 0.5, 'max_depth': 5, 'min_child_weight': 5, 'subsample': 0.9}
+
