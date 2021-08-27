@@ -8,7 +8,6 @@ Monitor and optimize regression models **(DecisionTreeRegressor, RandomForestReg
 **XGBoost Regressor: TRAINING_CLEAN**
 ```
 Performance: 128238.40 RMSE
-
 Optimal Hyper-Parameters:
 'eta': 0.30000000000000004, 'gamma': 0.1, 'max_depth': 5, 'min_child_weight': 1, 'subsample': 0.9}
 ```
@@ -16,28 +15,24 @@ Optimal Hyper-Parameters:
 **RandomForest Regressor: TRAINING_CLEAN**
 ```
 Performance: 117951.42 RMSE
-
 Optimal Hyper-Parameters:
 'n_estimators': 951, 'max_depth': 16, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': 'auto'
 ```
 **Decision Tree Regressor: TRAINING_CLEAN**
 ```
 Performance: 183979.50
-
 Optimal Hyper-Parameters:
 'max_depth': 5, 'min_samples_split': 18, 'min_samples_leaf': 8}.
 ```
 **KNeighbors Regressor with Scaling: TRAINING_OHE**
 ```
 Performance: 0.5549328284676253
-
 Optimal Hyper-Parameters:
 'n_neighbors': 8, 'weights': 'uniform', 'p': 2
 ```
 **Support Vector Regressor with Scaling: TRAINING_OHE**
 ```
 Performance: 0.5276328030789721
-
 Optimal Hyper-Parameters:
 'kernel': 'rbf', 'svm-regularization': 0.9830618662438664, 'degree': 3.0}
 ```
