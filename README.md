@@ -1,5 +1,4 @@
-# Regression-OptimalParameters-Flask-Azure
-
+# Optimal-RegressionModel-HyperParameters-Flask-Azure
 
 ## Objective
 Monitor and seek the optimal regression model **(DecisionTreeRegressor, RandomForestRegressor, XGBRegressor, SVR, KNeighborsRegressor)** and optimize each model's hyper-parameters using Tree-structured Parzen Estimator Approach (TPE) by iterating 1,000 trials. Evaluated the model's performance based on RMSE given different approaches by feature engineering (One-Hot Encoding, Target Encoding, etc) for the house prediction dataset. 
