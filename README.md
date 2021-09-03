@@ -1,5 +1,4 @@
-# Regression-OptimalParameters-Flask-Azure
-
+# Optimal-RegressionModel-HyperParameters-Flask-Azure
 
 ## Objective
 Monitor and seek the optimal regression model **(DecisionTreeRegressor, RandomForestRegressor, XGBRegressor, SVR, KNeighborsRegressor)** and optimize each model's hyper-parameters using Tree-structured Parzen Estimator Approach (TPE) by iterating 1,000 trials. Evaluated the model's performance based on RMSE given different approaches by feature engineering (One-Hot Encoding, Target Encoding, etc) for the house prediction dataset. 
@@ -25,12 +24,12 @@ TPE is a model that applies the Bayes Rule given the equation below, where the p
 
 
 With **TWO** distributions for hyper-parameters
-1. l(x): the value of the objective function is less than the threshold
-2. g(x): the value of the objective function is greater than the threshold
+1. **l(x):** the value of the objective function is less than the threshold
+2. **g(x):** the value of the objective function is greater than the threshold
 
 ![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20p%28x%7Cy%29%20%3D%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20%5Cl%28x%29%20%26%20if%5C%3B%20y%20%3C%20y*%5C%5C%20g%28x%29%20%26%20if%5C%3B%20y%20%5Cgeq%20y*%20%5Cend%7Bmatrix%7D%5Cright.)
 
-Expected Improvement (EI) objective is to maximize the ratio below. The objective function records the results and its hyper-parameters, forming a history. TPE works by iteration pairs to form l(x), evaluates each iterations ratio l(x)/g(x), and returns the highest Expected Improvement.
+**Expected Improvement (EI)** objective is to maximize the ratio below. The objective function records the results and its hyper-parameters, forming a history. TPE works by iterating pairs to form l(x), evaluates each ratios l(x)/g(x), and returns the highest Expected Improvement.
 
 ![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20EI_%7By*%7D%20%28x%29%20%3D%20arg%20max_%7Bx%5Cepsilon%20%5Cchi%20%7D%20%5Cfrac%7Bl%28x%29%7D%7Bg%28x%29%7D)
 
