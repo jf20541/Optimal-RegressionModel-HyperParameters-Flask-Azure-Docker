@@ -10,14 +10,9 @@ import optuna
 import config
 
 
-df = pd.read_csv(config.CLEAN_FILE)
+df = pd.read_csv(config.TRAINING_SCALE)
 targets = df.price.values.reshape(-1, 1)
 features = df.drop("price", axis=1).values
-
-scaler = MinMaxScaler()
-targets = scaler.fit_transform(targets)
-features = scaler.fit_transform(features)
-
 
 x_train, x_test, y_train, y_test = train_test_split(features, targets, test_size=0.25)
 
