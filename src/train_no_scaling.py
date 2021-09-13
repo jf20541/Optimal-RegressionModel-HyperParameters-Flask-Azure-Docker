@@ -117,19 +117,3 @@ if __name__ == "__main__":
     trial = study.best_trial
     print(f"Performance: {model_performance(best_model, x_test, y_test)}")
     print("Best hyperparameters: {}".format(trial.params))
-
-
-"""WITH TRAIN_CLEAN.CSV"""
-# Performance: 117951.41601946934
-# Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 951, 'max_depth': 16, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': 'auto'}
-
-"""WITH TRAIN_OHE.CSV"""
-# Performance: 143386.1571802534
-# Best hyperparameters: {'model_type': 'XGBRegressor', 'eta': 0.1, 'gamma': 1.0, 'max_depth': 5, 'min_child_weight': 1, 'subsample': 0.7000000000000001}
-
-# Performance: 0.5463994755315752
-# Best hyperparameters: {'model_type': 'SVR', 'kernel': 'rbf', 'svm-regularization': 1.7993381898137282, 'degree': 1.0}
-
-"""WITH train_target_encode"""
-# Performance: 133956.7806999551
-# Best hyperparameters: {'model_type': 'XGBRegressor', 'eta': 0.9, 'gamma': 0.5, 'max_depth': 5, 'min_child_weight': 5, 'subsample': 0.9}
