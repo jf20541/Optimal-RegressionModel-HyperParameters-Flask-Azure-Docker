@@ -10,8 +10,9 @@ import config
 
 
 df = pd.read_csv(config.TRAINING_NO_SCALE)
-targets = df.price.values.reshape(-1, 1)
-features = df.drop("price", axis=1).values
+targets = df.price.values
+features = df[['price','bedrooms', 'bathrooms', 'sqft_living', 'floors', 'condition', 'yr_built', 'yr_renovated']].values
+
 x_train, x_test, y_train, y_test = train_test_split(features, targets, test_size=0.25)
 
 
@@ -44,7 +45,7 @@ def create_model(trial):
         )
 
     if model_type == "RandomForestRegressor":
-        n_estimators = trial.suggest_int("n_estimators", 100, 1000)
+        n_estimators = trial.suggest_int("n_estimators", 100, 1100)
         max_depth = trial.suggest_int("max_depth", 5, 20)
         min_samples_split = trial.suggest_int("min_samples_split", 2, 20)
         min_samples_leaf = trial.suggest_int("min_samples_leaf", 2, 20)

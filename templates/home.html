@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>House Prediction using XGBoost Regressor</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="bedrooms" placeholder="Number of Bedrooms" required="required" /><br>
+    	<input type="text" name="bathrooms" placeholder="Number of Bathrooms" required="required" /><br>
+        <input type="text" name="sqft_living" placeholder="Square Footage Of A Home" required="required" /><br>
+        <input type="text" name="floors" placeholder="Number of Floors" required="required" /><br>
+        <input type="text" name="condition" placeholder="Home Condition" required="required" /><br>
+        <input type="text" name="yr_built" placeholder="Year Built" required="required" /><br>
+        <input type="text" name="yr_renovated" placeholder="Year Renovated" required="required" /><br>
+
+       
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+  
+   
+ </div>
+ {{prediction_text}}
+
+</body>
+</html>

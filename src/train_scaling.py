@@ -12,7 +12,7 @@ import config
 
 df = pd.read_csv(config.TRAINING_SCALE)
 targets = df.price.values.reshape(-1, 1)
-features = df.drop("price", axis=1).values
+features = df[['price','bedrooms', 'bathrooms', 'sqft_living', 'floors', 'condition', 'yr_built', 'yr_renovated']].values
 
 x_train, x_test, y_train, y_test = train_test_split(features, targets, test_size=0.25)
 
