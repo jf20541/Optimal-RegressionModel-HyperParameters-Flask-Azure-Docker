@@ -7,8 +7,8 @@ Monitor and seek the optimal regression model **(DecisionTreeRegressor, RandomFo
 
 **RandomForest Regressor: TRAINING_CLEAN**
 ```
-Performance: 3303.3688278130376 RMSE
-Best hyperparameters: {'model_type': 'XGBRegressor', 'eta': 0.1, 'gamma': 0.5, 'max_depth': 9, 'min_child_weight': 1, 'subsample': 1.0}
+Performance: 118098.32337847917. RMSE
+Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 618, 'max_depth': 12, 'min_samples_split': 19, 'min_samples_leaf': 2, 'max_features': 'auto'}
 ```
 
 ## Deployment with Flask/Azure
@@ -84,4 +84,3 @@ yr_renovated           int64
 city                   int64
 statezip               int64
 ```
-
