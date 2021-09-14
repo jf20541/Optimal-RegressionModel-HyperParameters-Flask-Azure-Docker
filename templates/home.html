@@ -20,11 +20,10 @@
     <form action="{{ url_for('predict')}}"method="post">
       <input type="text" name="bedrooms" placeholder="Number of Bedrooms" required="required" /><br>
     	<input type="text" name="bathrooms" placeholder="Number of Bathrooms" required="required" /><br>
-        <input type="text" name="sqft_living" placeholder="Square Footage Of A Home" required="required" /><br>
+        <input type="text" name="sqft_living" placeholder="Square Footage of Home" required="required" /><br>
         <input type="text" name="floors" placeholder="Number of Floors" required="required" /><br>
-        <input type="text" name="condition" placeholder="Home Condition" required="required" /><br>
-        <input type="text" name="yr_built" placeholder="Year Built" required="required" /><br>
-        <input type="text" name="yr_renovated" placeholder="Year Renovated" required="required" /><br>
+        <input type="text" name="condition" placeholder="Home Condition [1-5] " required="required" /><br>
+        <input type="text" name="yr_built" placeholder="Number of Years since Built" required="required" /><br>
 
        
 
