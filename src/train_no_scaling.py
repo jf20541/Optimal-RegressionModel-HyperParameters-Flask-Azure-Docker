@@ -11,7 +11,7 @@ import config
 
 df = pd.read_csv(config.TRAINING_NO_SCALE)
 targets = df.price.values
-features = df.drop('price', axis=1)
+features = df.drop("price", axis=1)
 x_train, x_test, y_train, y_test = train_test_split(features, targets, test_size=0.25)
 
 
