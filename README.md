@@ -12,8 +12,9 @@ Best hyperparameters: {'model_type': 'XGBRegressor', 'eta': 0.1, 'gamma': 0.5, '
 ```
 
 ## Deployment with Flask/Azure
-!()[]
-
+<p align="center">
+  <img width="600" height="800" src="https://github.com/jf20541/Optimal-RegressionModel-HyperParameters-Flask-Azure/blob/main/inputs/Screen%20Shot%202021-09-14%20at%2012.11.13%20PM.png?raw=true">
+</p>
 
 ## Metric
 ![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20RMSE%20%3D%20%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28Predicted_%7Bi%7D%20-%20Actual_%7Bi%7D%5E%7B%7D%29%5E%7B2%7D%7D%7BN%7D%7D)
