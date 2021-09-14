@@ -1,11 +1,9 @@
 import pandas as pd
 from math import sqrt
-from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.svm import SVR
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import optuna
 import config
 
