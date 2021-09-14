@@ -7,8 +7,8 @@ Monitor and seek the optimal regression model **(DecisionTreeRegressor, RandomFo
 
 **RandomForest Regressor: TRAINING_CLEAN**
 ```
-Performance: 117951.42 RMSE
-Optimal Hyper-Parameters: 'n_estimators': 951, 'max_depth': 16, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': 'auto'
+Performance: 3303.3688278130376 RMSE
+Best hyperparameters: {'model_type': 'XGBRegressor', 'eta': 0.1, 'gamma': 0.5, 'max_depth': 9, 'min_child_weight': 1, 'subsample': 1.0}
 ```
 ## Metric
 ![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20RMSE%20%3D%20%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28Predicted_%7Bi%7D%20-%20Actual_%7Bi%7D%5E%7B%7D%29%5E%7B2%7D%7D%7BN%7D%7D)
@@ -43,16 +43,12 @@ With **TWO** distributions for hyper-parameters
     ├── inputs
     │   ├── train.csv               # Training dataset
     │   └── train_clean.csv         # Cleaned data, featured engineered, scaled
-    ├── plots
-    │   ├── price_cleaned_distribution.png   
-    │   ├── price_conditions_yrbuilt.png
-    │   ├── price_skewed_distribution.png   
-    │   ├── train_clean_corr.png
-    │   ├── train_ohe.png
-    │   ├── train_target_encode_corr.png
-    │   └── year_built_dist.png
+    ├── templates
+    │   └── 
+    ├── statics
+    │   └── 
     ├── notebooks
-    │   └── house_price_eda.ipynb   # Exploratory Data Analysis and Feature Engineering
+    │   └── house_price_eda.ipynb   # EDA, Feature Engineering, Feature Selection
     ├── requierments.txt            # Packages used for project
     ├── sources.txt                 # Sources
     └── README.md
