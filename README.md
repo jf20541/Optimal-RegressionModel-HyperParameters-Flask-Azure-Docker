@@ -14,6 +14,7 @@ Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 61
 ## Deployment with Flask/Azure
 <p align="center">
   <img width="600" height="800" src="https://github.com/jf20541/Optimal-RegressionModel-HyperParameters-Flask-Azure/blob/main/inputs/Screen%20Shot%202021-09-14%20at%2012.11.13%20PM.png?raw=true">
+  https://randomforestregressorhomeprediction.azurewebsites.net
 </p>
 
 ## Metric
@@ -52,10 +53,10 @@ With **TWO** distributions for hyper-parameters
     │   ├── train_scale.csv         # Scaled dataset (featured engineered, and feature selection)
     │   └── train_clean.csv         # Cleaned data, featured engineered, scaled
     ├── templates
-    │   └── home.html               #
+    │   └── home.html               # HTML Code for front end deployment
     ├── statics
-    │   └── css
-    │       └── style.css           #
+    │   └── csst
+    │       └── style.css           # Apply a unique style to a HTML elements
     ├── notebooks
     │   └── house_price_eda.ipynb   # EDA, Feature Engineering, Feature Selection
     ├── requierments.txt            # Packages used for project
