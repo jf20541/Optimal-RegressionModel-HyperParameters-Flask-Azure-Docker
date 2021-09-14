@@ -10,6 +10,11 @@ Monitor and seek the optimal regression model **(DecisionTreeRegressor, RandomFo
 Performance: 3303.3688278130376 RMSE
 Best hyperparameters: {'model_type': 'XGBRegressor', 'eta': 0.1, 'gamma': 0.5, 'max_depth': 9, 'min_child_weight': 1, 'subsample': 1.0}
 ```
+
+## Deployment with Flask/Azure
+!()[]
+
+
 ## Metric
 ![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20RMSE%20%3D%20%5Csqrt%7B%5Cfrac%7B%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28Predicted_%7Bi%7D%20-%20Actual_%7Bi%7D%5E%7B%7D%29%5E%7B2%7D%7D%7BN%7D%7D)
 
@@ -41,12 +46,15 @@ With **TWO** distributions for hyper-parameters
     │   ├── train_scaling.py        # Optimal (KNearestNeighbor & SVM) with scaled data and optimized hyper-parameters.
     │   └── config.py               # Define path as global variable
     ├── inputs
-    │   ├── train.csv               # Training dataset
+    │   ├── train.csv               # Training dataset from Kaggle
+    │   ├── train_no_scale.csv      # No scaled dataset (featured engineered, and feature selection)
+    │   ├── train_scale.csv         # Scaled dataset (featured engineered, and feature selection)
     │   └── train_clean.csv         # Cleaned data, featured engineered, scaled
     ├── templates
-    │   └── 
+    │   └── home.html               #
     ├── statics
-    │   └── 
+    │   └── css
+    │       └── style.css           #
     ├── notebooks
     │   └── house_price_eda.ipynb   # EDA, Feature Engineering, Feature Selection
     ├── requierments.txt            # Packages used for project
