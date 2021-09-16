@@ -78,7 +78,7 @@ With **TWO** distributions for hyper-parameters
     │   └── house_price_eda.ipynb   # EDA, Feature Engineering, Feature Selection
     ├── requierments.txt            # Packages used for project
     ├── sources.txt                 # Sources
-    ├── Dockerfile                  # Text document that contains all the commands a user could call on the command line to assemble an image
+    ├── Dockerfile                  # Dockerize Flask Application 
     └── README.md
 
 ## Data
