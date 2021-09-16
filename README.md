@@ -11,6 +11,23 @@ Performance: 118098.32337847917. RMSE
 Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 618, 'max_depth': 12, 'min_samples_split': 19, 'min_samples_leaf': 2, 'max_features': 'auto'}
 ```
 
+## Docker
+```bash
+ docker build -t optimalregressionapi .
+ docker run -ti optimalregressionapi  
+ source activate ml 
+ 
+ # Train Optimal Regression Model with Optuna
+ cd src/src
+ python train_no_scaling.py
+ python train_scaling.py
+ python optimal_model.py
+ 
+ # Deploy Model using Flask 
+ cd .. 
+ python app.py
+```
+
 ## Deployment with Flask/Azure
 <p align="center">
   <img width="600" height="800" src="https://github.com/jf20541/Optimal-RegressionModel-HyperParameters-Flask-Azure/blob/main/inputs/Screen%20Shot%202021-09-14%20at%2012.11.13%20PM.png?raw=true">
@@ -55,12 +72,13 @@ With **TWO** distributions for hyper-parameters
     ├── templates
     │   └── home.html               # HTML Code for front end deployment
     ├── statics
-    │   └── csst
+    │   └── css
     │       └── style.css           # Apply a unique style to a HTML elements
     ├── notebooks
     │   └── house_price_eda.ipynb   # EDA, Feature Engineering, Feature Selection
     ├── requierments.txt            # Packages used for project
     ├── sources.txt                 # Sources
+    ├── Dockerfile                  # Text document that contains all the commands a user could call on the command line to assemble an image
     └── README.md
 
 ## Data
