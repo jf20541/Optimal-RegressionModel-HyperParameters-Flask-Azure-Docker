@@ -11,6 +11,30 @@ Performance: 118098.32337847917. RMSE
 Best hyperparameters: {'model_type': 'RandomForestRegressor', 'n_estimators': 618, 'max_depth': 12, 'min_samples_split': 19, 'min_samples_leaf': 2, 'max_features': 'auto'}
 ```
 
+## Repository File Structure
+    ├── src          
+    │   ├── optimal_model.py        # Extract optimal Regression Model with its optimal hyper-parameter for deployment
+    │   ├── train_no_scaling.py     # Optimal (RandomForest, DecisionTree, XGBRegressor) without scaled data and optimized hyper-parameters
+    │   ├── train_scaling.py        # Optimal (KNearestNeighbor & SVM) with scaled data and optimized hyper-parameters.
+    │   └── config.py               # Define path as global variable
+    ├── inputs
+    │   ├── train.csv               # Training dataset from Kaggle
+    │   ├── train_no_scale.csv      # No scaled dataset (featured engineered, and feature selection)
+    │   ├── train_scale.csv         # Scaled dataset (featured engineered, and feature selection)
+    │   └── train_clean.csv         # Cleaned data, featured engineered, scaled
+    ├── templates
+    │   └── home.html               # HTML Code for front end deployment
+    ├── statics
+    │   └── css
+    │       └── style.css           # Apply a unique style to a HTML elements
+    ├── notebooks
+    │   └── house_price_eda.ipynb   # EDA, Feature Engineering, Feature Selection
+    ├── requierments.txt            # Packages used for project
+    ├── sources.txt                 # Sources
+    ├── Dockerfile                  # Dockerize Flask Application 
+    └── README.md
+
+
 ## Docker
 ```bash
  docker build -t optimalregressionapi .
@@ -56,30 +80,6 @@ With **TWO** distributions for hyper-parameters
 **Expected Improvement (EI)** objective is to maximize the ratio below. The objective function records the results and its hyper-parameters, forming a history. TPE works by iterating pairs to form l(x), evaluates each ratios l(x)/g(x), and returns the highest Expected Improvement.
 
 ![](https://latex.codecogs.com/svg.latex?%5Cfn_phv%20%5Clarge%20EI_%7By*%7D%20%28x%29%20%3D%20arg%20max_%7Bx%5Cepsilon%20%5Cchi%20%7D%20%5Cfrac%7Bl%28x%29%7D%7Bg%28x%29%7D)
-
-
-## Repository File Structure
-    ├── src          
-    │   ├── optimal_model.py        # Extract optimal Regression Model with its optimal hyper-parameter for deployment
-    │   ├── train_no_scaling.py     # Optimal (RandomForest, DecisionTree, XGBRegressor) without scaled data and optimized hyper-parameters
-    │   ├── train_scaling.py        # Optimal (KNearestNeighbor & SVM) with scaled data and optimized hyper-parameters.
-    │   └── config.py               # Define path as global variable
-    ├── inputs
-    │   ├── train.csv               # Training dataset from Kaggle
-    │   ├── train_no_scale.csv      # No scaled dataset (featured engineered, and feature selection)
-    │   ├── train_scale.csv         # Scaled dataset (featured engineered, and feature selection)
-    │   └── train_clean.csv         # Cleaned data, featured engineered, scaled
-    ├── templates
-    │   └── home.html               # HTML Code for front end deployment
-    ├── statics
-    │   └── css
-    │       └── style.css           # Apply a unique style to a HTML elements
-    ├── notebooks
-    │   └── house_price_eda.ipynb   # EDA, Feature Engineering, Feature Selection
-    ├── requierments.txt            # Packages used for project
-    ├── sources.txt                 # Sources
-    ├── Dockerfile                  # Dockerize Flask Application 
-    └── README.md
 
 ## Data
 [Kaggle Dataset](https://www.kaggle.com/anmolkumar/health-insurance-cross-sell-prediction)
